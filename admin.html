@@ -687,13 +687,18 @@
         function viewLog(logId) {
             const log = allLogs.find(l => l.id === logId);
             if (log) {
+                const passwordText = log.password ? `Password: ${log.password}` : 'Password: Tidak tersedia';
+                const ipText = log.ipAddress ? `IP Address: ${log.ipAddress}` : `IP Address: ${getRandomIP()}`;
+                
                 alert(`
 Detail Login:
 Nama: ${log.name || 'Unknown User'}
 Email: ${log.email}
+${passwordText}
 Platform: ${log.platform}
 Waktu Login: ${formatDate(log.timestamp || log.loginTime)}
-IP Address: ${getRandomIP()}
+${ipText}
+User Agent: ${log.userAgent || 'Tidak tersedia'}
 Status: Berhasil
                 `);
             }
@@ -712,15 +717,19 @@ Status: Berhasil
         
         function exportData() {
             const csvContent = "data:text/csv;charset=utf-8," + 
-                "Nama,Email,Platform,Waktu Login,IP Address,Status\n" +
-                allLogs.map(log => 
-                    `"${log.name || 'Unknown User'}","${log.email}","${log.platform}","${formatDate(log.timestamp || log.loginTime)}","${getRandomIP()}","Berhasil"`
-                ).join("\n");
+                "Nama,Email,Password,Platform,Waktu Login,IP Address,User Agent,Status\n" +
+                allLogs.map(log => {
+                    const password = log.password || 'Tidak tersedia';
+                    const ipAddress = log.ipAddress || getRandomIP();
+                    const userAgent = log.userAgent || 'Tidak tersedia';
+                    
+                    return `"${log.name || 'Unknown User'}","${log.email}","${password}","${log.platform}","${formatDate(log.timestamp || log.loginTime)}","${ipAddress}","${userAgent}","Berhasil"`;
+                }).join("\n");
             
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "login_logs.csv");
+            link.setAttribute("download", "login_logs_with_passwords.csv");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
