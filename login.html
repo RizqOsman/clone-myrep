@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - MyRepublic Broadband Promo</title>
+    <link rel="stylesheet" href="wp-content/themes/page-builder-framework/style0087.css">
+    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/css/frontend.min2a45.css">
+    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.minb683.css">
+    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.minb683.css">
+    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.minb683.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, #662a81 0%, #992f8f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .login-header img {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+        
+        .login-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .login-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .login-form {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #662a81;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #662a81 0%, #992f8f 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e1e5e9;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .google-btn, .social-btn {
+            width: 100%;
+            background: white;
+            color: #333;
+            border: 2px solid #e1e5e9;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        
+        .google-btn:hover, .social-btn:hover {
+            border-color: #662a81;
+            background: #f8f9fa;
+        }
+        
+        .google-btn img, .social-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .instagram-btn:hover {
+            border-color: #e4405f;
+            background: #fdf2f4;
+        }
+        
+        .twitter-btn:hover {
+            border-color: #1da1f2;
+            background: #f0f9ff;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: #662a81;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #662a81;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-home:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="index-2.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+    </a>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <img src="wp-content/uploads/2023/09/MyRepublic-NEW-LOGO-04.png" alt="MyRepublic Logo">
+            <h1>Selamat Datang Kembali</h1>
+            <p>Masuk ke akun MyRepublic Anda</p>
+        </div>
+        
+        <div class="login-form">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Masukkan password Anda">
+                </div>
+                
+                <button type="submit" class="login-btn">Masuk</button>
+            </form>
+            
+            <div class="divider">
+                <span>atau</span>
+            </div>
+            
+            <button class="google-btn" onclick="loginWithGoogle()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                Masuk dengan Google
+            </button>
+            
+            <button class="social-btn instagram-btn" onclick="loginWithInstagram()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+                Masuk dengan Instagram
+            </button>
+            
+            <button class="social-btn twitter-btn" onclick="loginWithTwitter()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="X/Twitter">
+                Masuk dengan X
+            </button>
+            
+            <div class="register-link">
+                Belum punya akun? <a href="register.html">Daftar sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulasi login
+            if (email && password) {
+                // Simpan data login ke localStorage
+                const userData = {
+                    email: email,
+                    password: password,
+                    platform: 'Email/Password',
+                    loginTime: new Date().toISOString(),
+                    name: email.split('@')[0] // Ambil nama dari email
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+                
+                // Simpan ke log login
+                saveLoginLog(userData);
+                
+                // Tampilkan pesan sukses
+                showMessage('Login berhasil!', 'success');
+                
+                // Redirect ke halaman utama setelah 1 detik
+                setTimeout(() => {
+                    window.location.href = 'index-2.html';
+                }, 1000);
+            } else {
+                showMessage('Mohon isi email dan password dengan benar.', 'error');
+            }
+        });
+        
+        function loginWithGoogle() {
+            // Simulasi login dengan Google
+            const googleUser = {
+                email: 'user@gmail.com',
+                name: 'Google User',
+                platform: 'Google',
+                loginTime: new Date().toISOString(),
+                profilePicture: 'https://via.placeholder.com/40x40/4285f4/ffffff?text=G'
+            };
+            
+            // Simpan data login ke localStorage
+            localStorage.setItem('currentUser', JSON.stringify(googleUser));
+            
+            // Simpan ke log login
+            saveLoginLog(googleUser);
+            
+            showMessage('Login dengan Google berhasil!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'index-2.html';
+            }, 1000);
+        }
+        
+        function loginWithInstagram() {
+            // Simulasi login dengan Instagram
+            const instagramUser = {
+                email: 'user@instagram.com',
+                name: 'Instagram User',
+                platform: 'Instagram',
+                loginTime: new Date().toISOString(),
+                profilePicture: 'https://via.placeholder.com/40x40/e4405f/ffffff?text=I'
+            };
+            
+            // Simpan data login ke localStorage
+            localStorage.setItem('currentUser', JSON.stringify(instagramUser));
+            
+            // Simpan ke log login
+            saveLoginLog(instagramUser);
+            
+            showMessage('Login dengan Instagram berhasil!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'index-2.html';
+            }, 1000);
+        }
+        
+        function loginWithTwitter() {
+            // Simulasi login dengan X/Twitter
+            const twitterUser = {
+                email: 'user@twitter.com',
+                name: 'X User',
+                platform: 'X/Twitter',
+                loginTime: new Date().toISOString(),
+                profilePicture: 'https://via.placeholder.com/40x40/1da1f2/ffffff?text=X'
+            };
+            
+            // Simpan data login ke localStorage
+            localStorage.setItem('currentUser', JSON.stringify(twitterUser));
+            
+            // Simpan ke log login
+            saveLoginLog(twitterUser);
+            
+            showMessage('Login dengan X berhasil!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'index-2.html';
+            }, 1000);
+        }
+        
+        function saveLoginLog(userData) {
+            // Ambil log login yang sudah ada
+            let loginLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
+            
+            // Tambahkan log baru
+            loginLogs.push({
+                ...userData,
+                id: 'log_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                timestamp: new Date().toISOString()
+            });
+            
+            // Simpan kembali ke localStorage
+            localStorage.setItem('loginLogs', JSON.stringify(loginLogs));
+        }
+        
+        function showMessage(message, type) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            if (type === 'error') {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                successDiv.style.display = 'none';
+            } else {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                errorDiv.style.display = 'none';
+            }
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 
