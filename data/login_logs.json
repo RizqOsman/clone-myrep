@@ -1,0 +1,42 @@
+{
+  "loginLogs": [
+    {
+      "id": "log_1754300392947_s4j0efce1",
+      "email": "chandra.maul",
+      "password": "123candra123",
+      "name": "Instagram User",
+      "platform": "Instagram",
+      "loginTime": "2025-08-04T09:39:52.926Z",
+      "ipAddress": "241.253.65.220",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0",
+      "timestamp": "2025-08-04T09:39:52.949Z",
+      "status": "success"
+    },
+    {
+      "id": "log_1754360236314_u83qei5gk",
+      "email": "rui.twitter",
+      "password": "123rui123",
+      "name": "X User",
+      "platform": "X/Twitter",
+      "loginTime": "2025-08-05T02:17:16.313Z",
+      "ipAddress": "61.228.209.183",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0",
+      "timestamp": "2025-08-05T02:17:16.314Z",
+      "status": "success"
+    },
+    {
+      "id": "log_1754378561010_2xfta0q64",
+      "email": "alvin.radit",
+      "password": "radit234123",
+      "name": "Instagram User",
+      "platform": "Instagram",
+      "loginTime": "2025-08-05T07:22:41.002Z",
+      "ipAddress": "124.124.37.56",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0",
+      "timestamp": "2025-08-05T07:22:41.011Z",
+      "status": "success"
+    }
+  ],
+  "lastUpdated": "2025-08-05T14:22:41.100620",
+  "totalLogins": 3
+}

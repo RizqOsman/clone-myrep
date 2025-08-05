@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/webp" href="favicon.webp">
     <title>Admin Dashboard - MyRepublic</title>
     <link rel="stylesheet" href="wp-content/themes/page-builder-framework/style0087.css">
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/css/frontend.min2a45.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.minb683.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.minb683.css">
-    <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.minb683.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Local -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <style>
         * {
             margin: 0;
@@ -98,6 +98,8 @@
         .btn-secondary:hover {
             background: #f8f9fa;
         }
+        
+
         
         .main-content {
             padding: 30px 0;
@@ -285,6 +287,8 @@
             color: #d32f2f;
         }
         
+
+        
         .pagination {
             display: flex;
             justify-content: center;
@@ -317,11 +321,7 @@
             color: #666;
         }
         
-        .no-data i {
-            font-size: 48px;
-            color: #e1e5e9;
-            margin-bottom: 15px;
-        }
+
         
         .access-notice {
             background: #fff3cd;
@@ -332,6 +332,8 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        
+
         
         @media (max-width: 768px) {
             .header-content {
@@ -373,7 +375,7 @@
                 </div>
                 
                 <div class="header-actions">
-                    <a href="index-2.html" class="btn btn-primary">
+                    <a href="index.html" class="btn btn-primary">
                         <i class="fas fa-home"></i>
                         Beranda
                     </a>
@@ -480,12 +482,37 @@
         });
         
         function loadLogs() {
-            // Get login logs from localStorage
-            allLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
-            filteredLogs = [...allLogs];
-            
-            displayLogs();
-            updateStats();
+            // Load data from file JSON melalui server
+            fetch('/get-data?type=all')
+                .then(response => response.json())
+                .then(data => {
+                    // Load login logs
+                    if (data.loginLogs && data.loginLogs.loginLogs) {
+                        allLogs = data.loginLogs.loginLogs;
+                    } else {
+                        allLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
+                    }
+                    
+                    // Load users
+                    if (data.users && data.users.users) {
+                        allUsers = data.users.users;
+                    } else {
+                        allUsers = JSON.parse(localStorage.getItem('users') || '[]');
+                    }
+                    
+                    filteredLogs = [...allLogs];
+                    displayLogs();
+                    updateStats();
+                })
+                .catch(error => {
+                    console.error('Error loading data from server:', error);
+                    // Fallback ke localStorage
+                    allLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
+                    allUsers = JSON.parse(localStorage.getItem('users') || '[]');
+                    filteredLogs = [...allLogs];
+                    displayLogs();
+                    updateStats();
+                });
         }
         
         function displayLogs() {
@@ -498,7 +525,7 @@
                 tableBody.innerHTML = `
                     <tr>
                         <td colspan="7" class="no-data">
-                            <i class="fas fa-sign-in-alt"></i>
+                            <i class="fas fa-inbox fa-3x"></i>
                             <p>Tidak ada data login</p>
                         </td>
                     </tr>
@@ -558,10 +585,10 @@
         
         function getPlatformIcon(platform) {
             switch(platform) {
-                case 'Google': return 'G';
-                case 'Instagram': return 'I';
-                case 'X/Twitter': return 'X';
-                case 'Email/Password': return 'E';
+                case 'Google': return '<i class="fab fa-google"></i>';
+                case 'Instagram': return '<i class="fab fa-instagram"></i>';
+                case 'X/Twitter': return '<i class="fab fa-twitter"></i>';
+                case 'Email/Password': return '<i class="fas fa-envelope"></i>';
                 default: return '?';
             }
         }

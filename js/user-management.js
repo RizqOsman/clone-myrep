@@ -5,17 +5,17 @@ class UserManager {
         this.currentUser = this.loadCurrentUser();
     }
     
-    // Load users from localStorage
+
     loadUsers() {
         return JSON.parse(localStorage.getItem('users') || '[]');
     }
     
-    // Load current user from localStorage
+
     loadCurrentUser() {
         return JSON.parse(localStorage.getItem('currentUser') || 'null');
     }
     
-    // Save users to localStorage
+
     saveUsers() {
         localStorage.setItem('users', JSON.stringify(this.users));
     }
