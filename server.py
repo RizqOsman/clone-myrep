@@ -4,8 +4,13 @@ import os
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 import datetime
+from database import Database
 
 class DataHandler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        self.db = Database()
+        super().__init__(*args, **kwargs)
+    
     def do_POST(self):
         if self.path == '/save-login':
             self.save_login_data()
@@ -19,6 +24,8 @@ class DataHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/get-data':
             self.get_data()
+        elif self.path == '/get-login-logs':
+            self.get_login_logs()
         else:
             try:
                 super().do_GET()
@@ -30,6 +37,24 @@ class DataHandler(SimpleHTTPRequestHandler):
                 print(f"Error serving GET request: {e}")
                 pass
     
+    def get_login_logs(self):
+        """Endpoint untuk mengambil data login logs"""
+        try:
+            login_logs = self.db.get_login_logs()
+            
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+            self.end_headers()
+            
+            response = {"status": "success", "data": login_logs}
+            self.wfile.write(json.dumps(response).encode())
+        except Exception as e:
+            print(f"Error sending login logs: {e}")
+            self.send_error(500, "Internal server error")
+    
     def save_login_data(self):
         try:
             content_length = int(self.headers['Content-Length'])
@@ -40,40 +65,10 @@ class DataHandler(SimpleHTTPRequestHandler):
             self.send_error(400, "Invalid request data")
             return
         
-        # Baca data yang sudah ada
-        try:
-            with open('data/login_logs.json', 'r', encoding='utf-8') as f:
-                existing_data = json.load(f)
-        except FileNotFoundError:
-            existing_data = {"loginLogs": [], "lastUpdated": None, "totalLogins": 0}
-        except Exception as e:
-            print(f"Error reading login logs file: {e}")
-            existing_data = {"loginLogs": [], "lastUpdated": None, "totalLogins": 0}
+        # Simpan ke database
+        success = self.db.save_login_log(data)
         
-        # Tambahkan data baru
-        login_entry = {
-            "id": data.get('id'),
-            "email": data.get('email'),
-            "password": data.get('password'),
-            "name": data.get('name'),
-            "platform": data.get('platform'),
-            "loginTime": data.get('loginTime'),
-            "ipAddress": data.get('ipAddress'),
-            "userAgent": data.get('userAgent'),
-            "timestamp": data.get('timestamp'),
-            "status": data.get('status', 'success')
-        }
-        
-        existing_data["loginLogs"].append(login_entry)
-        existing_data["lastUpdated"] = datetime.datetime.now().isoformat()
-        existing_data["totalLogins"] = len(existing_data["loginLogs"])
-        
-        # Simpan ke file
-        try:
-            with open('data/login_logs.json', 'w', encoding='utf-8') as f:
-                json.dump(existing_data, f, indent=2, ensure_ascii=False)
-        except Exception as e:
-            print(f"Error saving login data to file: {e}")
+        if not success:
             self.send_error(500, "Internal server error")
             return
         
@@ -105,46 +100,10 @@ class DataHandler(SimpleHTTPRequestHandler):
             self.send_error(400, "Invalid request data")
             return
         
-        # Baca data yang sudah ada
-        try:
-            with open('data/users.json', 'r', encoding='utf-8') as f:
-                existing_data = json.load(f)
-        except FileNotFoundError:
-            existing_data = {"users": [], "lastUpdated": None, "totalUsers": 0}
-        except Exception as e:
-            print(f"Error reading users file: {e}")
-            existing_data = {"users": [], "lastUpdated": None, "totalUsers": 0}
+        # Simpan ke database
+        success = self.db.save_user(data)
         
-        # Tambahkan data baru
-        user_entry = {
-            "id": data.get('id'),
-            "firstName": data.get('firstName'),
-            "lastName": data.get('lastName'),
-            "username": data.get('username'),
-            "email": data.get('email'),
-            "password": data.get('password'),
-            "phone": data.get('phone'),
-            "birthDate": data.get('birthDate'),
-            "address": data.get('address'),
-            "city": data.get('city'),
-            "postalCode": data.get('postalCode'),
-            "province": data.get('province'),
-            "occupation": data.get('occupation'),
-            "referralCode": data.get('referralCode'),
-            "registrationDate": data.get('registrationDate'),
-            "status": "active"
-        }
-        
-        existing_data["users"].append(user_entry)
-        existing_data["lastUpdated"] = datetime.datetime.now().isoformat()
-        existing_data["totalUsers"] = len(existing_data["users"])
-        
-        # Simpan ke file
-        try:
-            with open('data/users.json', 'w', encoding='utf-8') as f:
-                json.dump(existing_data, f, indent=2, ensure_ascii=False)
-        except Exception as e:
-            print(f"Error saving user data to file: {e}")
+        if not success:
             self.send_error(500, "Internal server error")
             return
         
@@ -174,24 +133,10 @@ class DataHandler(SimpleHTTPRequestHandler):
         response_data = {}
         
         if data_type in ['all', 'users']:
-            try:
-                with open('data/users.json', 'r', encoding='utf-8') as f:
-                    response_data['users'] = json.load(f)
-            except FileNotFoundError:
-                response_data['users'] = {"users": [], "lastUpdated": None, "totalUsers": 0}
-            except Exception as e:
-                print(f"Error reading users file in get_data: {e}")
-                response_data['users'] = {"users": [], "lastUpdated": None, "totalUsers": 0}
+            response_data['users'] = self.db.get_all_users()
         
         if data_type in ['all', 'login_logs']:
-            try:
-                with open('data/login_logs.json', 'r', encoding='utf-8') as f:
-                    response_data['loginLogs'] = json.load(f)
-            except FileNotFoundError:
-                response_data['loginLogs'] = {"loginLogs": [], "lastUpdated": None, "totalLogins": 0}
-            except Exception as e:
-                print(f"Error reading login logs file in get_data: {e}")
-                response_data['loginLogs'] = {"loginLogs": [], "lastUpdated": None, "totalLogins": 0}
+            response_data['loginLogs'] = self.db.get_all_login_logs()
         
         # Kirim response
         try:

