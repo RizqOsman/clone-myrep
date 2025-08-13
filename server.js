@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public')); // untuk serve static files
-
+app.use(express.static(__dirname));
 // Inisialisasi database SQLite
 const db = new sqlite3.Database('./myrepublic.db');
 
