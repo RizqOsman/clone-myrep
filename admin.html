@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,64 +10,65 @@
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.minb683.css">
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.minb683.css">
     <link rel="stylesheet" href="wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.minb683.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: #f5f7fa;
             min-height: 100vh;
         }
-        
+
         .admin-header {
             background: linear-gradient(135deg, #662a81 0%, #992f8f 100%);
             color: white;
             padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .admin-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
+
         .logo-section {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
+
         .logo-section img {
             width: 150px;
         }
-        
+
         .admin-title h1 {
             font-size: 24px;
             font-weight: 600;
         }
-        
+
         .admin-title p {
             font-size: 14px;
             opacity: 0.9;
         }
-        
+
         .header-actions {
             display: flex;
             gap: 15px;
         }
-        
+
         .btn {
             padding: 10px 20px;
             border: none;
@@ -79,72 +81,72 @@
             gap: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        
+
         .btn-primary:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
         }
-        
+
         .btn-secondary {
             background: white;
             color: #662a81;
         }
-        
+
         .btn-secondary:hover {
             background: #f8f9fa;
         }
-        
+
         .main-content {
             padding: 30px 0;
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .stat-card {
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             border-left: 4px solid #662a81;
         }
-        
+
         .stat-card h3 {
             font-size: 14px;
             color: #666;
             margin-bottom: 10px;
         }
-        
+
         .stat-card .number {
             font-size: 32px;
             font-weight: 700;
             color: #662a81;
         }
-        
+
         .search-section {
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
         }
-        
+
         .search-row {
             display: flex;
             gap: 15px;
             align-items: center;
             flex-wrap: wrap;
         }
-        
+
         .search-input {
             flex: 1;
             min-width: 300px;
@@ -153,39 +155,39 @@
             border-radius: 8px;
             font-size: 14px;
         }
-        
+
         .search-input:focus {
             outline: none;
             border-color: #662a81;
         }
-        
+
         .table-container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
-        
+
         .table-header {
             padding: 20px 25px;
             border-bottom: 1px solid #e1e5e9;
         }
-        
+
         .table-header h2 {
             font-size: 20px;
             font-weight: 600;
             color: #333;
         }
-        
+
         .table-wrapper {
             overflow-x: auto;
         }
-        
+
         .admin-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .admin-table th {
             background: #f8f9fa;
             padding: 15px;
@@ -194,17 +196,17 @@
             color: #333;
             border-bottom: 1px solid #e1e5e9;
         }
-        
+
         .admin-table td {
             padding: 15px;
             border-bottom: 1px solid #e1e5e9;
             vertical-align: top;
         }
-        
+
         .admin-table tr:hover {
             background: #f8f9fa;
         }
-        
+
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -217,40 +219,40 @@
             font-weight: 600;
             font-size: 14px;
         }
-        
+
         .user-info {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .user-name {
             font-weight: 600;
             color: #333;
         }
-        
+
         .user-email {
             font-size: 12px;
             color: #666;
         }
-        
+
         .status-badge {
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: 500;
         }
-        
+
         .status-active {
             background: #e8f5e8;
             color: #2e7d32;
         }
-        
+
         .status-pending {
             background: #fff3e0;
             color: #f57c00;
         }
-        
+
         .platform-badge {
             padding: 4px 8px;
             border-radius: 12px;
@@ -258,33 +260,33 @@
             font-weight: 500;
             color: white;
         }
-        
+
         .action-buttons {
             display: flex;
             gap: 8px;
         }
-        
+
         .btn-sm {
             padding: 6px 12px;
             font-size: 12px;
             border-radius: 6px;
         }
-        
+
         .btn-view {
             background: #e3f2fd;
             color: #1976d2;
         }
-        
+
         .btn-edit {
             background: #fff3e0;
             color: #f57c00;
         }
-        
+
         .btn-delete {
             background: #ffebee;
             color: #d32f2f;
         }
-        
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -293,7 +295,7 @@
             padding: 20px;
             border-top: 1px solid #e1e5e9;
         }
-        
+
         .page-btn {
             padding: 8px 12px;
             border: 1px solid #e1e5e9;
@@ -303,26 +305,26 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .page-btn:hover,
         .page-btn.active {
             background: #662a81;
             color: white;
             border-color: #662a81;
         }
-        
+
         .no-data {
             text-align: center;
             padding: 50px;
             color: #666;
         }
-        
+
         .no-data i {
             font-size: 48px;
             color: #e1e5e9;
             margin-bottom: 15px;
         }
-        
+
         .access-notice {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
@@ -332,27 +334,27 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
-            
+
             .search-row {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
+
             .search-input {
                 min-width: auto;
             }
-            
+
             .admin-table {
                 font-size: 12px;
             }
-            
+
             .admin-table th,
             .admin-table td {
                 padding: 10px 8px;
@@ -360,6 +362,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="admin-header">
         <div class="admin-container">
@@ -371,7 +374,7 @@
                         <p>Kelola data pengguna MyRepublic</p>
                     </div>
                 </div>
-                
+
                 <div class="header-actions">
                     <a href="index-2.html" class="btn btn-primary">
                         <i class="fas fa-home"></i>
@@ -385,38 +388,39 @@
             </div>
         </div>
     </div>
-    
+
     <div class="main-content">
         <div class="admin-container">
             <div class="access-notice">
                 <i class="fas fa-shield-alt"></i>
-                <strong>Akses Admin Panel:</strong> Halaman ini hanya dapat diakses langsung melalui URL <code>localhost:8000/admin</code>
+                <strong>Akses Admin Panel:</strong> Halaman ini mengambil data dari database SQLite melalui API
             </div>
-            
+
             <!-- Statistics Cards -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Total Pengguna</h3>
-                    <div class="number" id="totalUsers">0</div>
+                    <div class="number" id="totalUsers">-</div>
                 </div>
                 <div class="stat-card">
                     <h3>Total Login</h3>
-                    <div class="number" id="totalLogins">0</div>
+                    <div class="number" id="totalLogins">-</div>
                 </div>
                 <div class="stat-card">
                     <h3>Login Hari Ini</h3>
-                    <div class="number" id="todayLogins">0</div>
+                    <div class="number" id="todayLogins">-</div>
                 </div>
                 <div class="stat-card">
                     <h3>Platform Terpopuler</h3>
                     <div class="number" id="popularPlatform">-</div>
                 </div>
             </div>
-            
+
             <!-- Search Section -->
             <div class="search-section">
                 <div class="search-row">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Cari berdasarkan nama, email, atau platform...">
+                    <input type="text" class="search-input" id="searchInput"
+                        placeholder="Cari berdasarkan nama, email, atau platform...">
                     <select class="search-input" id="platformFilter" style="max-width: 150px;">
                         <option value="">Semua Platform</option>
                         <option value="Email/Password">Email/Password</option>
@@ -434,13 +438,13 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Login Logs Table -->
             <div class="table-container">
                 <div class="table-header">
-                    <h2>Log Aktivitas Login - Semua Platform</h2>
+                    <h2>Log Aktivitas Login - Database SQLite</h2>
                 </div>
-                
+
                 <div class="table-wrapper">
                     <table class="admin-table" id="logsTable">
                         <thead>
@@ -455,11 +459,16 @@
                             </tr>
                         </thead>
                         <tbody id="logsTableBody">
-                            <!-- Data will be populated by JavaScript -->
+                            <tr>
+                                <td colspan="7" class="loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Memuat data...</p>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="pagination" id="pagination">
                     <!-- Pagination will be generated by JavaScript -->
                 </div>
@@ -468,33 +477,73 @@
     </div>
 
     <script>
-        let allLogs = [];
-        let filteredLogs = [];
+        // Base URL untuk API
+        const API_BASE_URL = 'http://localhost:3000/api';
+
         let currentPage = 1;
         const logsPerPage = 10;
-        
-        // Load logs on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        let totalPages = 1;
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            loadStats();
             loadLogs();
-            updateStats();
         });
-        
-        function loadLogs() {
-            // Get login logs from localStorage
-            allLogs = JSON.parse(localStorage.getItem('loginLogs') || '[]');
-            filteredLogs = [...allLogs];
-            
-            displayLogs();
-            updateStats();
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/stats`);
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('totalUsers').textContent = result.stats.totalUsers;
+                    document.getElementById('totalLogins').textContent = result.stats.totalLogins;
+                    document.getElementById('todayLogins').textContent = result.stats.todayLogins;
+                    document.getElementById('popularPlatform').textContent = result.stats.popularPlatform;
+                } else {
+                    console.error('Error loading stats:', result.message);
+                }
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+                // Set default values jika error
+                document.getElementById('totalUsers').textContent = '0';
+                document.getElementById('totalLogins').textContent = '0';
+                document.getElementById('todayLogins').textContent = '0';
+                document.getElementById('popularPlatform').textContent = '-';
+            }
         }
-        
-        function displayLogs() {
+
+        async function loadLogs(page = 1, search = '', platform = '') {
+            try {
+                const params = new URLSearchParams({
+                    page: page,
+                    limit: logsPerPage
+                });
+
+                if (search) params.append('search', search);
+                if (platform) params.append('platform', platform);
+
+                const response = await fetch(`${API_BASE_URL}/login-logs?${params}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    displayLogs(result.logs);
+                    generatePagination(result.pagination);
+                    currentPage = result.pagination.page;
+                    totalPages = result.pagination.totalPages;
+                } else {
+                    showError('Gagal memuat data: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error fetching logs:', error);
+                showError('Terjadi kesalahan koneksi ke server');
+            }
+        }
+
+        function displayLogs(logs) {
             const tableBody = document.getElementById('logsTableBody');
-            const startIndex = (currentPage - 1) * logsPerPage;
-            const endIndex = startIndex + logsPerPage;
-            const pageLogs = filteredLogs.slice(startIndex, endIndex);
-            
-            if (pageLogs.length === 0) {
+
+            if (logs.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
                         <td colspan="7" class="no-data">
@@ -505,8 +554,8 @@
                 `;
                 return;
             }
-            
-            tableBody.innerHTML = pageLogs.map(log => `
+
+            tableBody.innerHTML = logs.map(log => `
                 <tr>
                     <td>
                         <div class="user-info">
@@ -525,29 +574,39 @@
                             ${log.platform}
                         </span>
                     </td>
-                    <td>${formatDate(log.timestamp || log.loginTime)}</td>
-                    <td>${getRandomIP()}</td>
+                    <td>${formatDate(log.timestamp || log.login_time)}</td>
+                    <td>${log.ip_address || 'N/A'}</td>
                     <td>
                         <span class="status-badge status-active">Berhasil</span>
                     </td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn btn-sm btn-view" onclick="viewLog('${log.id}')">
+                            <button class="btn btn-sm btn-view" onclick="viewLog('${log.log_id}')">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <button class="btn btn-sm btn-delete" onclick="deleteLog('${log.id}')">
+                            <button class="btn btn-sm btn-delete" onclick="deleteLog('${log.log_id}')">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
                     </td>
                 </tr>
             `).join('');
-            
-            generatePagination();
         }
-        
+
+        function showError(message) {
+            const tableBody = document.getElementById('logsTableBody');
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="error-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>${message}</p>
+                    </td>
+                </tr>
+            `;
+        }
+
         function getPlatformColor(platform) {
-            switch(platform) {
+            switch (platform) {
                 case 'Google': return '#4285f4';
                 case 'Instagram': return '#e4405f';
                 case 'X/Twitter': return '#1da1f2';
@@ -555,9 +614,9 @@
                 default: return '#666';
             }
         }
-        
+
         function getPlatformIcon(platform) {
-            switch(platform) {
+            switch (platform) {
                 case 'Google': return 'G';
                 case 'Instagram': return 'I';
                 case 'X/Twitter': return 'X';
@@ -565,11 +624,7 @@
                 default: return '?';
             }
         }
-        
-        function getRandomIP() {
-            return `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-        }
-        
+
         function formatDate(dateString) {
             const date = new Date(dateString);
             return date.toLocaleDateString('id-ID', {
@@ -580,172 +635,179 @@
                 minute: '2-digit'
             });
         }
-        
-        function updateStats() {
-            const totalLogins = allLogs.length;
-            const today = new Date().toDateString();
-            const todayLogins = allLogs.filter(log => 
-                new Date(log.timestamp || log.loginTime).toDateString() === today
-            ).length;
-            
-            // Hitung platform terpopuler
-            const platformCounts = {};
-            allLogs.forEach(log => {
-                const platform = log.platform;
-                platformCounts[platform] = (platformCounts[platform] || 0) + 1;
-            });
-            
-            const popularPlatform = Object.keys(platformCounts).length > 0 
-                ? Object.keys(platformCounts).reduce((a, b) => platformCounts[a] > platformCounts[b] ? a : b)
-                : '-';
-            
-            document.getElementById('totalLogins').textContent = totalLogins;
-            document.getElementById('todayLogins').textContent = todayLogins;
-            document.getElementById('popularPlatform').textContent = popularPlatform;
-            
-            // Ambil data users untuk statistik total pengguna
-            const allUsers = JSON.parse(localStorage.getItem('users') || '[]');
-            document.getElementById('totalUsers').textContent = allUsers.length;
-        }
-        
-        function searchLogs() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+        async function searchLogs() {
+            const searchTerm = document.getElementById('searchInput').value;
             const platformFilter = document.getElementById('platformFilter').value;
-            
-            filteredLogs = allLogs.filter(log => {
-                const matchesSearch = 
-                    log.name?.toLowerCase().includes(searchTerm) ||
-                    log.email?.toLowerCase().includes(searchTerm) ||
-                    log.platform?.toLowerCase().includes(searchTerm);
-                
-                const matchesPlatform = !platformFilter || log.platform === platformFilter;
-                
-                return matchesSearch && matchesPlatform;
-            });
-            
+
             currentPage = 1;
-            displayLogs();
+            await loadLogs(currentPage, searchTerm, platformFilter);
         }
-        
+
         function clearSearch() {
             document.getElementById('searchInput').value = '';
             document.getElementById('platformFilter').value = '';
-            filteredLogs = [...allLogs];
             currentPage = 1;
-            displayLogs();
+            loadLogs();
         }
-        
-        function generatePagination() {
-            const totalPages = Math.ceil(filteredLogs.length / logsPerPage);
-            const pagination = document.getElementById('pagination');
-            
-            if (totalPages <= 1) {
-                pagination.innerHTML = '';
+
+        function generatePagination(pagination) {
+            const paginationDiv = document.getElementById('pagination');
+
+            if (pagination.totalPages <= 1) {
+                paginationDiv.innerHTML = '';
                 return;
             }
-            
+
             let paginationHTML = '';
-            
+
             // Previous button
             paginationHTML += `
-                <button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                <button class="page-btn" onclick="changePage(${pagination.page - 1})" ${pagination.page === 1 ? 'disabled' : ''}>
                     <i class="fas fa-chevron-left"></i>
                 </button>
             `;
-            
+
             // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+            for (let i = 1; i <= pagination.totalPages; i++) {
+                if (i === 1 || i === pagination.totalPages || (i >= pagination.page - 2 && i <= pagination.page + 2)) {
                     paginationHTML += `
-                        <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">
+                        <button class="page-btn ${i === pagination.page ? 'active' : ''}" onclick="changePage(${i})">
                             ${i}
                         </button>
                     `;
-                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                } else if (i === pagination.page - 3 || i === pagination.page + 3) {
                     paginationHTML += '<span class="page-btn">...</span>';
                 }
             }
-            
+
             // Next button
             paginationHTML += `
-                <button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                <button class="page-btn" onclick="changePage(${pagination.page + 1})" ${pagination.page === pagination.totalPages ? 'disabled' : ''}>
                     <i class="fas fa-chevron-right"></i>
                 </button>
             `;
-            
-            pagination.innerHTML = paginationHTML;
+
+            paginationDiv.innerHTML = paginationHTML;
         }
-        
-        function changePage(page) {
-            const totalPages = Math.ceil(filteredLogs.length / logsPerPage);
+
+        async function changePage(page) {
             if (page >= 1 && page <= totalPages) {
-                currentPage = page;
-                displayLogs();
+                const searchTerm = document.getElementById('searchInput').value;
+                const platformFilter = document.getElementById('platformFilter').value;
+                await loadLogs(page, searchTerm, platformFilter);
             }
         }
-        
-        function viewLog(logId) {
-            const log = allLogs.find(l => l.id === logId);
-            if (log) {
-                const passwordText = log.password ? `Password: ${log.password}` : 'Password: Tidak tersedia';
-                const ipText = log.ipAddress ? `IP Address: ${log.ipAddress}` : `IP Address: ${getRandomIP()}`;
-                
-                alert(`
+
+        async function viewLog(logId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/login-logs`);
+                const result = await response.json();
+
+                if (result.success) {
+                    const log = result.logs.find(l => l.log_id === logId);
+                    if (log) {
+                        const passwordText = log.password ? `Password: ${log.password}` : 'Password: Tidak tersedia';
+                        const ipText = log.ip_address ? `IP Address: ${log.ip_address}` : 'IP Address: Tidak tersedia';
+
+                        alert(`
 Detail Login:
+ID Log: ${log.log_id}
 Nama: ${log.name || 'Unknown User'}
 Email: ${log.email}
 ${passwordText}
 Platform: ${log.platform}
-Waktu Login: ${formatDate(log.timestamp || log.loginTime)}
+Waktu Login: ${formatDate(log.timestamp || log.login_time)}
 ${ipText}
-User Agent: ${log.userAgent || 'Tidak tersedia'}
-Status: Berhasil
-                `);
+User Agent: ${log.user_agent || 'Tidak tersedia'}
+Status: ${log.status || 'Berhasil'}
+                        `);
+                    }
+                }
+            } catch (error) {
+                console.error('Error viewing log:', error);
+                alert('Gagal memuat detail log');
             }
         }
-        
-        function deleteLog(logId) {
+
+        async function deleteLog(logId) {
             if (confirm('Apakah Anda yakin ingin menghapus log ini?')) {
-                allLogs = allLogs.filter(l => l.id !== logId);
-                filteredLogs = filteredLogs.filter(l => l.id !== logId);
-                localStorage.setItem('loginLogs', JSON.stringify(allLogs));
-                displayLogs();
-                updateStats();
-                alert('Log berhasil dihapus!');
+                try {
+                    const response = await fetch(`${API_BASE_URL}/login-logs/${logId}`, {
+                        method: 'DELETE'
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert('Log berhasil dihapus!');
+                        loadLogs(currentPage); // Reload current page
+                        loadStats(); // Update statistics
+                    } else {
+                        alert('Gagal menghapus log: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting log:', error);
+                    alert('Terjadi kesalahan saat menghapus log');
+                }
             }
         }
-        
-        function exportData() {
-            const csvContent = "data:text/csv;charset=utf-8," + 
-                "Nama,Email,Password,Platform,Waktu Login,IP Address,User Agent,Status\n" +
-                allLogs.map(log => {
-                    const password = log.password || 'Tidak tersedia';
-                    const ipAddress = log.ipAddress || getRandomIP();
-                    const userAgent = log.userAgent || 'Tidak tersedia';
-                    
-                    return `"${log.name || 'Unknown User'}","${log.email}","${password}","${log.platform}","${formatDate(log.timestamp || log.loginTime)}","${ipAddress}","${userAgent}","Berhasil"`;
-                }).join("\n");
-            
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "login_logs_with_passwords.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+
+        async function exportData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/login-logs?limit=10000`); // Get all data
+                const result = await response.json();
+
+                if (result.success && result.logs.length > 0) {
+                    const csvContent = "data:text/csv;charset=utf-8," +
+                        "ID Log,Nama,Email,Password,Platform,Waktu Login,IP Address,User Agent,Status\n" +
+                        result.logs.map(log => {
+                            const password = log.password || 'Tidak tersedia';
+                            const ipAddress = log.ip_address || 'Tidak tersedia';
+                            const userAgent = (log.user_agent || 'Tidak tersedia').replace(/"/g, '""');
+
+                            return `"${log.log_id}","${log.name || 'Unknown User'}","${log.email}","${password}","${log.platform}","${formatDate(log.timestamp || log.login_time)}","${ipAddress}","${userAgent}","${log.status || 'Berhasil'}"`;
+                        }).join("\n");
+
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", `myrepublic_login_logs_${new Date().toISOString().split('T')[0]}.csv`);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    alert(`Berhasil export ${result.logs.length} data login!`);
+                } else {
+                    alert('Tidak ada data untuk di-export');
+                }
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                alert('Gagal export data: ' + error.message);
+            }
         }
-        
+
         // Search on Enter key
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 searchLogs();
             }
         });
-        
+
         // Auto search when platform filter changes
-        document.getElementById('platformFilter').addEventListener('change', function() {
+        document.getElementById('platformFilter').addEventListener('change', function () {
             searchLogs();
         });
+
+        // Auto refresh data setiap 30 detik
+        setInterval(() => {
+            loadStats();
+            // Hanya reload logs jika di halaman pertama dan tidak ada filter
+            if (currentPage === 1 && !document.getElementById('searchInput').value && !document.getElementById('platformFilter').value) {
+                loadLogs();
+            }
+        }, 30000);
     </script>
 </body>
-</html> 
+
+</html>
